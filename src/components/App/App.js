@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 import './App.css';
-import {getOrders} from '../../apiCalls';
+import {getOrders, postOrder} from '../../apiCalls';
 import OrderForm from '../../components/OrderForm/OrderForm';
 import Orders from '../Orders/Orders';
 
@@ -16,6 +16,7 @@ const App  = () =>  {
 
   const addOrder = (order) => {
     setOrders(orders => [...orders, order])
+    postOrder(order)
   }
  
     return (
