@@ -8,15 +8,17 @@ const App  = () =>  {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {  
-    getOrders()
-      .catch(err => console.error('Error fetching:', err));
-  })
+    (async () => {
+      const orders = await getOrders()
+      setOrders(orders.orders) 
+    })()
+  }, [])
  
     return (
       <main className="App">
         <header>
           <h1>Burrito Builder</h1>
-            <OrderForm />
+            <OrderForm submit={setOrders} />
         </header>
             <Orders orders={orders}/>  
       </main>
