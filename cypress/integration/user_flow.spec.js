@@ -1,7 +1,10 @@
 describe('User Flow', () => {
   beforeEach(() => {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/orders', {
+      statusCode: 200,
+      fixture: 'orders'
+    })
     cy.visit('http://localhost:3000')
-      // .intercept('GET','http://localhost:3001/api/v1/orders', {fixture: OrderForm.json})
   })
   it('Should successfully see the homepage upon visit', () => {
     cy.get('h1')
