@@ -4,14 +4,20 @@ export const OrderForm = ({submit}) => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    this.clearInputs();
-    submit(name, ingredients)
-  }
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   this.clearInputs();
+  //   submit(name, ingredients)
+  // }
 
- const clearInputs = () => {
-    this.setState({name: '', ingredients: []});
+  //  const clearInputs = () => {
+//     setName('')
+//     setIngredients([])
+//   }
+
+  const addIngredients = (newIngred) => {
+    setIngredients(ingredients => [...ingredients, newIngred])
+    console.log(ingredients)
   }
 
   const possibleIngredients = [
@@ -23,7 +29,10 @@ export const OrderForm = ({submit}) => {
 
   const ingredientButtons = possibleIngredients.map(ingredient => {
       return (
-        <button key={ingredient} name={ingredient} onClick={e => this.handleIngredientChange(e)}>
+        <button key={ingredient} name={ingredient} onClick={(e) =>{
+          e.preventDefault()
+          addIngredients(ingredient)
+          }}>
           {ingredient}
         </button>
       )
@@ -37,7 +46,7 @@ export const OrderForm = ({submit}) => {
           placeholder='Name'
           name='name'
           value={name}
-          onChange={e => setName(e)}
+          onChange={e => setName(e.target.value)}
         />
 
         { ingredientButtons }
