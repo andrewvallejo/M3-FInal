@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import './OrderForm.css'
 
-export const OrderForm = ({submit}) => {
+export const OrderForm = ({submitOrder}) => {
   const [name, setName] = useState('')
   const [ingredients, setIngredients] = useState([])
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   this.clearInputs();
-  //   submit(name, ingredients)
-  // }
+  const updatedOrder =  {
+      name: name,
+      ingredients: ingredients
+  }
 
-  //  const clearInputs = () => {
-//     setName('')
-//     setIngredients([])
-//   }
+  const handleSubmit = e => {
+    e.preventDefault();
+    submitOrder(updatedOrder)
+    clearInputs();
+  }
+
+   const clearInputs = () => {
+    setName('')
+    setIngredients([])
+  }
 
   const addIngredients = (newIngred) => {
     setIngredients(ingredients => [...ingredients, newIngred])
@@ -38,7 +44,6 @@ export const OrderForm = ({submit}) => {
       )
     })
 
-
     return (
       <form>
         <input  
@@ -48,14 +53,9 @@ export const OrderForm = ({submit}) => {
           value={name}
           onChange={e => setName(e.target.value)}
         />
-
         { ingredientButtons }
-
         <p>Order: { ingredients.join(', ') || 'Nothing selected' }</p>
-
-        <button onClick={e => this.handleSubmit(e)}>
-          Submit Order
-        </button>
+        {ingredients.length ? <button onClick={e => handleSubmit(e)}>Submit</button> : ''}
       </form>
     )  
 }
