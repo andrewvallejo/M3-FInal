@@ -1,0 +1,38 @@
+{
+  "orders": [
+      {
+          "id": 1,
+          "name": "Scott",
+          "ingredients": [
+              "beans",
+              "lettuce",
+              "carnitas",
+              "queso fresco",
+              "jalapeno"
+          ]
+      },
+      {
+          "id": 2,
+          "name": "Kayla",
+          "ingredients": [
+              "steak",
+              "pico de gallo",
+              "lettuce",
+              "carnitas",
+              "queso fresco",
+              "jalapeno"
+          ]
+      },
+      {
+          "id": 3,
+          "name": "Andrew",
+          "ingredients": [
+              "sofritas",
+              "beans",
+              "sour cream",
+              "carnitas",
+              "queso fresco"
+          ]
+      }
+  ]
+}
