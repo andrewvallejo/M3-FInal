@@ -13,12 +13,16 @@ const App  = () =>  {
       setOrders(orders.orders) 
     })()
   }, [])
+
+  const addOrder = (order) => {
+    setOrders(orders => [...orders, order])
+  }
  
     return (
       <main className="App">
         <header>
           <h1>Burrito Builder</h1>
-            <OrderForm submit={setOrders} />
+            <OrderForm submitOrder={addOrder} />
         </header>
             <Orders orders={orders}/>  
       </main>
