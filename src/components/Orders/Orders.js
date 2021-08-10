@@ -8,8 +8,7 @@ const Orders = ({orders} )=> {
       <div key={nanoid(1)} className="order">
         <h3>{order.name}</h3>
         <ul  className="ingredient-list">
-          {
-          order.ingredients.map(ingredient => {
+          { order.ingredients.map(ingredient => {
             return <li key={nanoid(1)}>{ingredient}</li>
           })}
         </ul>
